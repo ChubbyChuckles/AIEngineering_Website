@@ -9,16 +9,46 @@ import {
   FaReact,
   FaWordpress,
   FaFigma,
+  FaDocker,
+  FaJava,
 } from "react-icons/fa";
-
 import {
   SiNextdotjs,
   SiFramer,
   SiAdobexd,
   SiAdobephotoshop,
+  SiAdobeillustrator,
+  SiAdobeindesign,
+  SiAdobepremierepro,
+  SiAdobeaftereffects,
+  SiAdobelightroom,
+  SiAutodesk,
+  SiApachenetbeanside, // Placeholder for ANSYS, Creo, etc.
+  SiPython,
+  SiTypescript,
+  SiPostgresql,
+  SiMongodb,
+  SiNodedotjs,
+  SiExpress,
+  SiTailwindcss,
+  SiPrisma,
+  SiAmazonaws,
+  SiNginx,
+  SiKubernetes,
+  SiTensorflow,
+  SiPytorch,
+  // SiMatlab,
+  // SiRproject,
+  SiWolfram,
+  SiTableau,
+  SiMicrosoft,
+  SiJira,
+  SiTrello,
+  SiVisualstudiocode,
+  SiJupyter,
 } from "react-icons/si";
 
-//  data
+// data
 const aboutData = [
   {
     title: "skills",
@@ -29,15 +59,104 @@ const aboutData = [
           <FaHtml5 />,
           <FaCss3 />,
           <FaJs />,
+          <SiTypescript />,
           <FaReact />,
           <SiNextdotjs />,
           <SiFramer />,
           <FaWordpress />,
+          <SiNodedotjs />,
+          // <SiExpress />,
+          // <SiMongodb />,
+          // <SiPostgresql />,
+          // <SiPrisma />,
+          <SiTailwindcss />,
+          <SiVisualstudiocode />,
         ],
+        // subtitles: [
+        //   "HTML5",
+        //   "CSS3",
+        //   "JavaScript",
+        //   "TypeScript",
+        //   "React",
+        //   "Next.js",
+        //   "Framer",
+        //   "WordPress",
+        //   "Node.js",
+        //   "Express",
+        //   "MongoDB",
+        //   "PostgreSQL",
+        //   "Prisma",
+        //   "Tailwind CSS",
+        //   "VS Code",
+        // ],
       },
       {
         title: "UI/UX Design",
-        icons: [<FaFigma />, <SiAdobexd />, <SiAdobephotoshop />],
+        icons: [<FaFigma />, <SiAdobexd />],
+        // subtitles: ["Figma", "Adobe XD"],
+      },
+      {
+        title: "Adobe Suite",
+        icons: [
+          <SiAdobephotoshop />,
+          <SiAdobeillustrator />,
+          <SiAdobeindesign />,
+          <SiAdobepremierepro />,
+          <SiAdobeaftereffects />,
+          <SiAdobelightroom />,
+        ],
+        // subtitles: [
+        //   "Photoshop",
+        //   "Illustrator",
+        //   "InDesign",
+        //   "Premiere Pro",
+        //   "After Effects",
+        //   "Lightroom",
+        // ],
+      },
+      {
+        title: "Engineering Design",
+        icons: [
+          <SiAutodesk />,
+          <SiAutodesk />,
+          <SiApachenetbeanside />,
+          <SiApachenetbeanside />,
+          // <SiMatlab />,
+          <SiApachenetbeanside />,
+        ],
+        // subtitles: ["AutoCAD", "CATIA", "SolidWorks", "Creo", "MATLAB", "ANSYS"],
+      },
+      {
+        title: "Data Science & AI",
+        icons: [
+          <SiPython />,
+          <SiTensorflow />,
+          <SiPytorch />,
+          <SiJupyter />,
+          // <SiRproject />,
+          <SiTableau />,
+        ],
+        // subtitles: ["Python", "TensorFlow", "PyTorch", "Jupyter", "R", "Tableau"],
+      },
+      {
+        title: "Mathematical Modeling",
+        icons: [<SiWolfram />, <SiMicrosoft />],
+        // subtitles: ["MATLAB", "Mathematica", "R", "Excel"],
+      },
+      {
+        title: "Civil Engineering Design",
+        icons: [
+          <SiAutodesk />,
+          <SiAutodesk />,
+          <SiApachenetbeanside />,
+          <SiApachenetbeanside />,
+        ],
+        // subtitles: ["AutoCAD", "Revit", "STAAD.Pro", "SAP2000"],
+      },
+      {
+        title: "Project Management",
+        icons: [<SiJira />, <SiTrello />, <SiMicrosoft />],
+        // subtitles: ["Jira", "Trello", "MS Project"],
       },
     ],
   },
@@ -122,11 +241,10 @@ const About = () => {
         <Avatar />
       </motion.div>
       <div
-        className="container mx-auto h-full flex flex-col items-center xl:flex-row
-      gap-x-6"
+        className="container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6"
       >
         {/* text */}
-        <div className="flex-1 flex flex-col justify-center">
+        <div className="flex-1 flex flex-col justify-center mt-12">
           <motion.h2
             variants={fadeIn("right", 0.2)}
             initial="hidden"
@@ -247,8 +365,18 @@ const About = () => {
                   <div>{item.stage}</div>
                   <div className="flex gap-x-4">
                     {/* icons */}
-                    {item.icons?.map((icon, itemIndex) => {
-                      return <div className="text-2xl text-white">{icon}</div>;
+                    {item.icons?.map((icon, iconIndex) => {
+                      return (
+                        <div className="text-2xl text-white" key={iconIndex}>
+                          {icon}
+                          {/* Display subtitle below icon if available */}
+                          {item.subtitles && item.subtitles[iconIndex] && (
+                            <div className="text-xs text-white/60 mt-1">
+                              {item.subtitles[iconIndex]}
+                            </div>
+                          )}
+                        </div>
+                      );
                     })}
                   </div>
                 </div>
