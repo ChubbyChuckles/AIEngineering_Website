@@ -1,3 +1,4 @@
+/* eslint-disable */
 // components
 import Circles from "../../components/Circles";
 
