@@ -8,11 +8,13 @@ import "swiper/css/pagination";
 
 // icons
 import {
-  RxCrop,
+  RxGear,
+  RxDashboard,
+  RxCube,
+  RxBarChart,
+  RxLightningBolt,
+  RxCode,
   RxPencil2,
-  RxDesktop,
-  RxReader,
-  RxRocket,
   RxArrowTopRight,
 } from "react-icons/rx";
 
@@ -22,29 +24,46 @@ import { FreeMode, Pagination } from "swiper";
 // data
 const serviceData = [
   {
-    icon: <RxCrop />,
-    title: "Branding",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    icon: <RxGear />,
+    title: "Task Automation",
+    description:
+      "Streamline workflows with custom automation solutions, enhancing efficiency using scripting and software integration.",
+  },
+  {
+    icon: <RxDashboard />,
+    title: "Research & Development",
+    description:
+      "Drive innovation through cutting-edge R&D, leveraging engineering and computational expertise to develop novel solutions.",
+  },
+  {
+    icon: <RxCube />,
+    title: "Simulation",
+    description:
+      "Perform advanced simulations for engineering and scientific applications using tools like ANSYS and MATLAB.",
+  },
+  {
+    icon: <RxBarChart />,
+    title: "Data Science",
+    description:
+      "Transform data into insights with statistical analysis, machine learning, and visualization using Python and Tableau.",
+  },
+  {
+    icon: <RxLightningBolt />,
+    title: "AI Integration",
+    description:
+      "Integrate AI models into applications for predictive analytics and intelligent automation using TensorFlow and PyTorch.",
+  },
+  {
+    icon: <RxCode />,
+    title: "Programming",
+    description:
+      "Develop robust software solutions with languages like Python, JavaScript, and C++ for diverse applications.",
   },
   {
     icon: <RxPencil2 />,
     title: "Design",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  {
-    icon: <RxDesktop />,
-    title: "Development",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  {
-    icon: <RxReader />,
-    title: "Copywriting",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  {
-    icon: <RxRocket />,
-    title: "SEO",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description:
+      "Create user-centric UI/UX and engineering designs using Figma, Adobe Suite, and CAD tools like AutoCAD.",
   },
 ];
 
@@ -56,7 +75,6 @@ const ServiceSlider = () => {
           slidesPerView: 1,
           spaceBetween: 15,
         },
-
         640: {
           slidesPerView: 3,
           spaceBetween: 15,
@@ -73,7 +91,7 @@ const ServiceSlider = () => {
         return (
           <SwiperSlide key={index}>
             <div
-              className="bg-[rgba(65,47,123,0.15] h-max rounded-lg px-6 py-8 flex
+              className="bg-[rgba(65,47,123,0.15)] h-max rounded-lg px-6 py-8 flex
             sm:flex-col gap-x-6 sm:gap-x-0 group cursor-pointer hover:bg-[rgba(89,65,169,0.15)] 
             transition-all duration-300"
             >
