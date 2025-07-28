@@ -20,8 +20,8 @@ export default function Document() {
           property="og:image"
           content="https://ai-engineering-website.vercel.app/public/og-image.jpg"
         />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        <meta property="og:image:width" content="2464" />
+        <meta property="og:image:height" content="1411" />
         <meta property="og:type" content="website" />
       </Head>
       <body>
