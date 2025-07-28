@@ -43,7 +43,8 @@ const Work = () => {
               exit="hidden"
               className="mb-4 max-w-[400px] mx-auto lg:mx-0"
             >
-              TODO - Insert text about work.
+              My work weaves code, design, and engineering into impactful
+              solutions that shape the future.
             </motion.p>
           </div>
           {/* slider */}

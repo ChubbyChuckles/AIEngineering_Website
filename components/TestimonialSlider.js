@@ -5,21 +5,21 @@ const testimonialData = [
     name: "Anne Smith",
     position: "Customer",
     message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+      "Your expertise transformed our outdated website into a sleek, high-performing platform. The intuitive design and robust functionality boosted user engagement by 50%. A truly exceptional collaboration!",
   },
   {
     image: "/t-avt-2.png",
     name: "Jane Doe",
     position: "Customer",
     message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+      "Your AI-driven analytics revolutionized our data strategy, delivering clear insights with stunning visualizations. The seamless integration and innovative approach exceeded all expectations. Highly recommend your work!",
   },
   {
     image: "/t-avt-3.png",
     name: "John Doe",
     position: "Customer",
     message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+      "Your simulation and automation solutions streamlined our engineering workflows, cutting costs significantly. The precision and creativity you brought to the project were outstanding. Absolutely thrilled!",
   },
 ];
 

@@ -43,7 +43,8 @@ const Services = () => {
               exit="hidden"
               className="mb-4 max-w-[400px] mx-auto lg:mx-0"
             >
-              TODO - Insert text about services.
+              From vision to victory, I build the future with expertise and
+              ingenuity.
             </motion.p>
           </div>
           {/* slider */}
