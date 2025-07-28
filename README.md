@@ -1,6 +1,6 @@
 # AI Engineering Portfolio
 
-Welcome to my personal portfolio website, showcasing innovative solutions in AI, engineering, and web development. Built with Next.js and deployed on Vercel at [https://ai-engineering-website.vercel.app](https://ai-engineering-website.vercel.app), this site highlights my expertise in transforming ideas into digital reality through cutting-edge technology and creative design.
+Welcome to my personal portfolio website, showcasing innovative solutions in AI, engineering, and web development. Built with Next.js (credit: https://github.com/cristianmihai01/ethan-portfolio-starter) and deployed on Vercel at [https://ai-engineering-website.vercel.app](https://ai-engineering-website.vercel.app), this site highlights my expertise in transforming ideas into digital reality through cutting-edge technology and creative design.
 
 ![Portfolio Preview](https://ai-engineering-website.vercel.app/og-image.jpg)
 
