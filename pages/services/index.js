@@ -20,6 +20,7 @@ const Services = () => {
   return (
     <div
       id="main-content"
+      data-section="services"
       className="h-full bg-primary/30 py-36 flex items-center"
     >
       <Circles />

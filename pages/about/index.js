@@ -240,6 +240,7 @@ const About = () => {
   return (
     <div
       id="main-content"
+      data-section="about"
       className="h-full bg-primary/30 py-32 text-center xl:text-left"
     >
       <Circles />

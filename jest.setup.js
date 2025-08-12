@@ -28,15 +28,46 @@ jest.mock("swiper", () => ({
 // Mock framer-motion to reduce animation complexity (keep variants accessible)
 jest.mock("framer-motion", () => {
   const React = require("react");
+  const validTags = new Set([
+    "div",
+    "span",
+    "section",
+    "header",
+    "footer",
+    "main",
+    "nav",
+    "ul",
+    "li",
+    "p",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "button",
+    "a",
+    "form",
+    "input",
+    "textarea",
+    "img",
+  ]);
   const create = (Tag) =>
-    React.forwardRef(({ children, ...rest }, ref) => (
-      <Tag ref={ref} {...rest}>
-        {children}
-      </Tag>
-    ));
+    React.forwardRef(({ children, ...rest }, ref) => {
+      const Comp = Tag;
+      return (
+        <Comp ref={ref} {...rest}>
+          {children}
+        </Comp>
+      );
+    });
   return {
     __esModule: true,
-    motion: new Proxy({}, { get: () => create("div") }),
+    // Provide a minimal motion proxy that returns the correct intrinsic element to retain semantics (e.g., motion.form -> <form>)
+    motion: new Proxy(
+      {},
+      { get: (_, prop) => create(validTags.has(prop) ? prop : "div") }
+    ),
   };
 });
 
@@ -75,3 +106,20 @@ jest.mock("next/router", () => ({
 global.__setRouterPathname = (path) => {
   mockRouter.pathname = path;
 };
+
+// matchMedia mock (for prefers-reduced-motion, theme toggles)
+if (typeof window !== "undefined" && !window.matchMedia) {
+  Object.defineProperty(window, "matchMedia", {
+    writable: true,
+    value: (query) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    }),
+  });
+}
