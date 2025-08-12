@@ -139,6 +139,20 @@
   font-weight: 600;
   transition: top .2s;
 }
+
+/* Enhanced focus visibility */
+*:focus-visible {
+  outline: 2px solid #f13024;
+  outline-offset: 2px;
+}
+
+/* High contrast utility */
+.hc-text { color: #ffffff; }
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
 .skip-link:focus {
   top: 0;
 }
