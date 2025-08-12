@@ -1,8 +1,20 @@
 // next image
 import Image from "next/image";
 
-// components
-import ParticlesContainer from "../components/ParticlesContainer";
+// dynamic heavy components
+import dynamic from "next/dynamic";
+const ParticlesContainer = dynamic(
+  () => import("../components/ParticlesContainer"),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        data-testid="particles-skeleton"
+        className="w-full h-full absolute inset-0 animate-pulse bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20"
+      />
+    ),
+  }
+);
 import ProjectsBtn from "../components/ProjectsBtn";
 import Avatar from "../components/Avatar";
 
@@ -14,7 +26,7 @@ import { fadeIn } from "../variants";
 
 const Home = () => {
   return (
-    <div id="main-content" className="bg-primary/60 h-full">
+    <div id="main-content" className="bg-primary/60 h-full" data-section="home">
       {/* text */}
       <div className="w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
         <div

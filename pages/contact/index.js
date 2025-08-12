@@ -11,7 +11,44 @@ import { motion } from "framer-motion";
 // variants
 import { fadeIn } from "../../variants";
 
+import { useState } from "react";
+
 const Contact = () => {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState({});
+  const [sent, setSent] = useState(false);
+
+  const validate = () => {
+    const newErrors = {};
+    if (!form.name.trim()) newErrors.name = "Name required";
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email))
+      newErrors.email = "Valid email required";
+    if (!form.subject.trim()) newErrors.subject = "Subject required";
+    if (form.message.trim().length < 10)
+      newErrors.message = "Message too short";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setSent(false);
+    if (validate()) {
+      setTimeout(() => {
+        setSent(true);
+      }, 300); // simulate async
+    }
+  };
+
   return (
     <div id="main-content" className="h-full bg-primary/30">
       <div className="container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full">
@@ -33,19 +70,82 @@ const Contact = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="flex-1 flex flex-col gap-6 w-full mx-auto"
+            noValidate
+            onSubmit={onSubmit}
+            className="flex-1 flex flex-col gap-6 w-full mx-auto relative"
+            aria-describedby="form-errors"
           >
             {/* input group */}
             <div className="flex gap-x-6 w-full">
-              <input type="text" placeholder="name" className="input" />
-              <input type="text" placeholder="email" className="input" />
+              <div className="flex-1">
+                <input
+                  name="name"
+                  value={form.name}
+                  onChange={onChange}
+                  type="text"
+                  placeholder="name"
+                  aria-invalid={!!errors.name}
+                  className="input"
+                />
+                {errors.name && (
+                  <p className="text-xs text-accent mt-1" role="alert">
+                    {errors.name}
+                  </p>
+                )}
+              </div>
+              <div className="flex-1">
+                <input
+                  name="email"
+                  value={form.email}
+                  onChange={onChange}
+                  type="email"
+                  placeholder="email"
+                  aria-invalid={!!errors.email}
+                  className="input"
+                />
+                {errors.email && (
+                  <p className="text-xs text-accent mt-1" role="alert">
+                    {errors.email}
+                  </p>
+                )}
+              </div>
             </div>
-            <input type="text" placeholder="subject" className="input" />
-            <textarea placeholder="message" className="textarea"></textarea>
+            <div>
+              <input
+                name="subject"
+                value={form.subject}
+                onChange={onChange}
+                type="text"
+                placeholder="subject"
+                aria-invalid={!!errors.subject}
+                className="input"
+              />
+              {errors.subject && (
+                <p className="text-xs text-accent mt-1" role="alert">
+                  {errors.subject}
+                </p>
+              )}
+            </div>
+            <div>
+              <textarea
+                name="message"
+                value={form.message}
+                onChange={onChange}
+                placeholder="message"
+                aria-invalid={!!errors.message}
+                className="textarea"
+              ></textarea>
+              {errors.message && (
+                <p className="text-xs text-accent mt-1" role="alert">
+                  {errors.message}
+                </p>
+              )}
+            </div>
             <button
               className="btn rounded-full border border-white/50 max-w-[170px]
               px-8 transition-all duration-300 flex items-center justify-center
               overflow-hidden hover:border-accent group"
+              type="submit"
             >
               <span
                 className="group-hover:-translate-y-[120%] group-hover:opacity-0
@@ -59,6 +159,17 @@ const Contact = () => {
                 duration-300 absolute text-[22px]"
               />
             </button>
+            <div aria-live="polite" id="form-errors" className="sr-only">
+              {Object.values(errors).join(" ")}
+            </div>
+            {sent && (
+              <div
+                className="absolute -top-10 right-0 bg-green-600 text-white text-sm px-4 py-2 rounded shadow-lg animate-fade-in"
+                role="status"
+              >
+                Message sent!
+              </div>
+            )}
           </motion.form>
         </div>
       </div>
