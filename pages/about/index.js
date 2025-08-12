@@ -57,21 +57,21 @@ const aboutData = [
       {
         title: "Web Development",
         icons: [
-          <FaHtml5 />,
-          <FaCss3 />,
-          <FaJs />,
-          <SiTypescript />,
-          <FaReact />,
-          <SiNextdotjs />,
-          <SiFramer />,
-          <FaWordpress />,
-          <SiNodedotjs />,
-          // <SiExpress />,
-          // <SiMongodb />,
-          // <SiPostgresql />,
-          // <SiPrisma />,
-          <SiTailwindcss />,
-          <SiVisualstudiocode />,
+          <FaHtml5 aria-label="HTML5" role="img" />,
+          <FaCss3 aria-hidden="true" />,
+          <FaJs aria-hidden="true" />,
+          <SiTypescript aria-hidden="true" />,
+          <FaReact aria-hidden="true" />,
+          <SiNextdotjs aria-hidden="true" />,
+          <SiFramer aria-hidden="true" />,
+          <FaWordpress aria-hidden="true" />,
+          <SiNodedotjs aria-hidden="true" />,
+          // <SiExpress aria-hidden="true" />,
+          // <SiMongodb aria-hidden="true" />,
+          // <SiPostgresql aria-hidden="true" />,
+          // <SiPrisma aria-hidden="true" />,
+          <SiTailwindcss aria-hidden="true" />,
+          <SiVisualstudiocode aria-hidden="true" />,
         ],
         // subtitles: [
         //   "HTML5",
@@ -93,18 +93,21 @@ const aboutData = [
       },
       {
         title: "UI/UX Design",
-        icons: [<FaFigma />, <SiAdobexd />],
+        icons: [
+          <FaFigma aria-label="Figma" role="img" />,
+          <SiAdobexd aria-hidden="true" />,
+        ],
         // subtitles: ["Figma", "Adobe XD"],
       },
       {
         title: "Adobe Suite",
         icons: [
-          <SiAdobephotoshop />,
-          <SiAdobeillustrator />,
-          <SiAdobeindesign />,
-          <SiAdobepremierepro />,
-          <SiAdobeaftereffects />,
-          <SiAdobelightroom />,
+          <SiAdobephotoshop aria-label="Adobe Photoshop" role="img" />,
+          <SiAdobeillustrator aria-hidden="true" />,
+          <SiAdobeindesign aria-hidden="true" />,
+          <SiAdobepremierepro aria-hidden="true" />,
+          <SiAdobeaftereffects aria-hidden="true" />,
+          <SiAdobelightroom aria-hidden="true" />,
         ],
         // subtitles: [
         //   "Photoshop",
@@ -118,45 +121,52 @@ const aboutData = [
       {
         title: "Engineering Design",
         icons: [
-          <SiAutodesk />,
-          <SiAutodesk />,
-          <SiApachenetbeanside />,
-          <SiApachenetbeanside />,
-          // <SiMatlab />,
-          <SiApachenetbeanside />,
+          <SiAutodesk aria-label="AutoCAD" role="img" />,
+          <SiAutodesk aria-hidden="true" />,
+          <SiApachenetbeanside aria-hidden="true" />,
+          <SiApachenetbeanside aria-hidden="true" />,
+          // <SiMatlab aria-hidden="true" />,
+          <SiApachenetbeanside aria-hidden="true" />,
         ],
         // subtitles: ["AutoCAD", "CATIA", "SolidWorks", "Creo", "MATLAB", "ANSYS"],
       },
       {
         title: "Data Science & AI",
         icons: [
-          <SiPython />,
-          <SiTensorflow />,
-          <SiPytorch />,
-          <SiJupyter />,
-          // <SiRproject />,
-          <SiTableau />,
+          <SiPython aria-label="Python" role="img" />,
+          <SiTensorflow aria-hidden="true" />,
+          <SiPytorch aria-hidden="true" />,
+          <SiJupyter aria-hidden="true" />,
+          // <SiRproject aria-hidden="true" />,
+          <SiTableau aria-hidden="true" />,
         ],
         // subtitles: ["Python", "TensorFlow", "PyTorch", "Jupyter", "R", "Tableau"],
       },
       {
         title: "Mathematical Modeling",
-        icons: [<SiWolfram />, <SiMicrosoft />],
+        icons: [
+          <SiWolfram aria-label="Wolfram" role="img" />,
+          <SiMicrosoft aria-hidden="true" />,
+        ],
         // subtitles: ["MATLAB", "Mathematica", "R", "Excel"],
       },
       {
         title: "Civil Engineering Design",
         icons: [
-          <SiAutodesk />,
-          <SiAutodesk />,
-          <SiApachenetbeanside />,
-          <SiApachenetbeanside />,
+          <SiAutodesk aria-label="AutoCAD" role="img" />,
+          <SiAutodesk aria-hidden="true" />,
+          <SiApachenetbeanside aria-hidden="true" />,
+          <SiApachenetbeanside aria-hidden="true" />,
         ],
         // subtitles: ["AutoCAD", "Revit", "STAAD.Pro", "SAP2000"],
       },
       {
         title: "Project Management",
-        icons: [<SiJira />, <SiTrello />, <SiMicrosoft />],
+        icons: [
+          <SiJira aria-label="Jira" role="img" />,
+          <SiTrello aria-hidden="true" />,
+          <SiMicrosoft aria-hidden="true" />,
+        ],
         // subtitles: ["Jira", "Trello", "MS Project"],
       },
     ],
@@ -227,7 +237,6 @@ import CountUp from "react-countup";
 
 const About = () => {
   const [index, setIndex] = useState(0);
-  console.log(index);
   return (
     <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
       <Circles />

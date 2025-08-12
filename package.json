@@ -6,10 +6,12 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-  "lint": "next lint",
-  "test": "jest --passWithNoTests",
-  "test:watch": "jest --watch",
-  "test:coverage": "jest --coverage"
+    "lint": "next lint",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "e2e": "playwright test",
+    "postinstall": "playwright install --with-deps || echo 'Playwright install skipped'"
   },
   "dependencies": {
     "framer-motion": "^10.12.16",
