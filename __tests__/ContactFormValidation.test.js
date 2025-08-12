@@ -13,7 +13,10 @@ describe("Contact form validation", () => {
     });
   });
 
-  it("submits when valid and shows success", async () => {
+  it("submits when valid, calls API and shows success", async () => {
+    global.fetch = jest
+      .fn()
+      .mockResolvedValue({ ok: true, json: async () => ({ ok: true }) });
     render(<Contact />);
     fireEvent.change(screen.getByPlaceholderText(/name/i), {
       target: { value: "John" },
@@ -29,5 +32,9 @@ describe("Contact form validation", () => {
     });
     fireEvent.click(screen.getByRole("button", { name: /let's talk/i }));
     await waitFor(() => expect(screen.getByRole("status")).toBeInTheDocument());
+    expect(global.fetch).toHaveBeenCalledWith(
+      "/api/contact",
+      expect.objectContaining({ method: "POST" })
+    );
   });
 });

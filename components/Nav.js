@@ -81,7 +81,7 @@ const Nav = () => {
       <div
         className="flex w-full xl:flex-col items-center justify-between overflow-x-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent
       xl:justify-center gap-y-10 px-4 md:px-20 xl:px-0 h-[70px] xl:h-max py-6 bg-white/10
-      backdrop-blur-sm text-3xl xl:text-xl xl:rounded-full touch-pan-x"
+      backdrop-blur-sm text-3xl xl:text-xl xl:rounded-full touch-pan-x relative"
       >
         {navData.map((link, index) => {
           return (
@@ -92,19 +92,20 @@ const Nav = () => {
               duration-300`}
               href={link.path}
               key={index}
+              aria-label={link.name}
             >
               {/* tooltip */}
-              <div className="absolute pr-14 right-0 hidden xl:group-hover:flex">
+              <div className="absolute pr-14 right-0 hidden xl:group-hover:flex xl:group-focus-within:flex pointer-events-none select-none">
                 <div
-                  className="bg-white relative flex text-primary items-center 
-                p-[6px] rounded-[3px]"
+                  className="bg-white/95 dark:bg-primary/90 relative flex text-primary dark:text-white items-center 
+                p-[6px] rounded-[4px] shadow-lg ring-1 ring-black/5"
                 >
                   <div className="text-[12px] leading-none font-semibold capitalize">
                     {link.name}
                   </div>
                   {/* triangle */}
                   <div
-                    className="border-solid border-l-white border-l-8 
+                    className="border-solid border-l-white dark:border-l-primary border-l-8 
                   border-y-transparent border-y-[6px] border-r-0 absolute -right-2"
                   ></div>
                 </div>

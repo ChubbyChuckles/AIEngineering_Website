@@ -12,6 +12,7 @@ const sora = Sora({
 import Nav from "../components/Nav";
 import Header from "../components/Header";
 import TopLeftImg from "../components/TopLeftImg";
+import Enhancements from "../components/Enhancements";
 import { useEffect, useState } from "react";
 
 const commands = [
@@ -112,6 +113,7 @@ const Layout = ({ children }) => {
         <Nav />
         <Header />
         {children}
+        <Enhancements />
       </div>
       <CommandPalette
         open={paletteOpen}
