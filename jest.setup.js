@@ -49,7 +49,7 @@ jest.mock("react-tsparticles", () => ({
 }));
 
 // Suppress Next.js Link intersection observer visibility updates (act warnings)
-jest.mock('next/dist/client/use-intersection', () => ({
+jest.mock("next/dist/client/use-intersection", () => ({
   __esModule: true,
   useIntersection: () => [() => {}, true, () => {}],
 }));

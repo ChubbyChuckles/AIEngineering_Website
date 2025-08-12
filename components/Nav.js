@@ -37,21 +37,22 @@ const Nav = () => {
   const pathname = router.pathname;
   return (
     <nav
+      aria-label="Primary"
       className="flex flex-col items-center xl:justify-center gap-y-4 fixed h-max 
-      bottom-0 mt-auto xl:right-[2%] z-50 top-0 w-full xl:w-16 xl:max-w-md xl:h-screen"
+      bottom-0 mt-auto xl:right-[2%] z-50 top-auto xl:top-0 w-full xl:w-16 xl:max-w-md xl:h-screen"
     >
       {/* inner */}
       <div
-        className="flex w-full xl:flex-col items-center justify-between 
-      xl:justify-center gap-y-10 px-4 md:px-40 xl:px-0 h-[80px] xl:h-max py-8 bg-white/10
-      backdrop-blur-sm text-3xl xl:text-xl xl:rounded-full"
+        className="flex w-full xl:flex-col items-center justify-between overflow-x-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent
+      xl:justify-center gap-y-10 px-4 md:px-20 xl:px-0 h-[70px] xl:h-max py-6 bg-white/10
+      backdrop-blur-sm text-3xl xl:text-xl xl:rounded-full touch-pan-x"
       >
         {navData.map((link, index) => {
           return (
             <Link
               className={`${
                 link.path === pathname && "text-accent"
-              } relative flex items-center group hover:text-accent transition-all
+              } relative flex items-center group hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary rounded-full p-2 transition-all
               duration-300`}
               href={link.path}
               key={index}
@@ -66,8 +67,10 @@ const Nav = () => {
                     {link.name}
                   </div>
                   {/* triangle */}
-                  <div className="border-solid border-l-white border-l-8 
-                  border-y-transparent border-y-[6px] border-r-0 absolute -right-2"></div>
+                  <div
+                    className="border-solid border-l-white border-l-8 
+                  border-y-transparent border-y-[6px] border-r-0 absolute -right-2"
+                  ></div>
                 </div>
               </div>
 
