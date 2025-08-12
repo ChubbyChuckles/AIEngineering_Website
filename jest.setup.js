@@ -1,43 +1,56 @@
-import '@testing-library/jest-dom';
-import 'whatwg-fetch';
+import "@testing-library/jest-dom";
+import "whatwg-fetch";
 
 // Mock next/image to behave like a normal img tag
-jest.mock('next/image', () => ({ __esModule: true, default: (props) => {
-  // eslint-disable-next-line @next/next/no-img-element
-  return <img {...props} />;
-}}));
+jest.mock("next/image", () => ({
+  __esModule: true,
+  default: (props) => {
+    const { priority, ...rest } = props;
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img {...rest} />;
+  },
+}));
 
 // Basic mock for swiper/react to avoid DOM/ResizeObserver issues
-jest.mock('swiper/react', () => ({
+jest.mock("swiper/react", () => ({
   Swiper: ({ children }) => <div data-testid="swiper">{children}</div>,
-  SwiperSlide: ({ children }) => <div data-testid="swiper-slide">{children}</div>,
+  SwiperSlide: ({ children }) => (
+    <div data-testid="swiper-slide">{children}</div>
+  ),
 }));
 
 // Mock swiper core modules referenced (FreeMode, Pagination)
-jest.mock('swiper', () => ({
+jest.mock("swiper", () => ({
   FreeMode: function FreeMode() {},
   Pagination: function Pagination() {},
 }));
 
 // Mock framer-motion to reduce animation complexity (keep variants accessible)
-jest.mock('framer-motion', () => {
-  const React = require('react');
-  const create = (Tag) => React.forwardRef(({ children, ...rest }, ref) => <Tag ref={ref} {...rest}>{children}</Tag>);
+jest.mock("framer-motion", () => {
+  const React = require("react");
+  const create = (Tag) =>
+    React.forwardRef(({ children, ...rest }, ref) => (
+      <Tag ref={ref} {...rest}>
+        {children}
+      </Tag>
+    ));
   return {
     __esModule: true,
-    motion: new Proxy({}, { get: () => create('div') }),
+    motion: new Proxy({}, { get: () => create("div") }),
   };
 });
 
 // Mock react-tsparticles (ParticlesContainer usage) if present
-jest.mock('react-tsparticles', () => ({
+jest.mock("react-tsparticles", () => ({
   __esModule: true,
-  Particles: (props) => <div data-testid="particles" {...props} />,
+  Particles: ({ init, loaded, ...rest }) => (
+    <div data-testid="particles" {...rest} />
+  ),
 }));
 
 // Router helper (tests can override as needed)
 const mockRouter = {
-  pathname: '/',
+  pathname: "/",
   prefetch: jest.fn().mockResolvedValue(null),
   push: jest.fn(),
   replace: jest.fn(),
@@ -48,9 +61,11 @@ const mockRouter = {
   isFallback: false,
 };
 
-jest.mock('next/router', () => ({
+jest.mock("next/router", () => ({
   useRouter: () => mockRouter,
 }));
 
 // Utility to allow tests to change pathname
-global.__setRouterPathname = (path) => { mockRouter.pathname = path; };
+global.__setRouterPathname = (path) => {
+  mockRouter.pathname = path;
+};
